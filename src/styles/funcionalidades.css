@@ -1,0 +1,506 @@
+/* ==========================================
+   APARIENCIA GENERAL
+   ========================================== */
+
+body {
+    background:
+        radial-gradient(
+            circle at top right,
+            #d7ebfa 0,
+            transparent 330px
+        ),
+        #f2f7fc;
+}
+
+.gm-shell {
+    padding-bottom: 110px;
+}
+
+.gm-subtitle {
+    margin-top: 10px;
+    color: #6d8098;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.gm-section-title {
+    margin: 28px 0 18px;
+    color: #173e66;
+    font-size: 19px;
+}
+
+
+/* ==========================================
+   NAVEGACIÓN INFERIOR
+   ========================================== */
+
+.gm-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    padding: 9px 12px max(9px, env(safe-area-inset-bottom));
+
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid #dbe8f2;
+    box-shadow: 0 -4px 24px rgba(22, 71, 99, 0.06);
+}
+
+.gm-nav-item {
+    flex: 1;
+    max-width: 190px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    padding: 5px 12px;
+    border-radius: 11px;
+
+    text-decoration: none;
+    color: #8292a7;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.gm-nav-icon {
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.gm-nav-active {
+    color: #087b9d;
+    background: #ebf6fc;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   TARJETAS DE TAREAS
+   ========================================== */
+
+.gm-tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.gm-task-card {
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #dce8f2;
+    background: #ffffff;
+
+    box-shadow: 0 5px 20px rgba(24, 72, 113, 0.045);
+}
+
+.gm-subtask {
+    margin-left: 16px;
+    border-left: 4px solid #9acfe4;
+}
+
+.gm-task-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.gm-task-heading h2 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #173e66;
+}
+
+.gm-task-description {
+    margin: 14px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6b8096;
+}
+
+.gm-task-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    margin: 16px 0;
+    color: #788ca1;
+    font-size: 12px;
+}
+
+.gm-small-label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #087b9d;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   ESTADOS
+   ========================================== */
+
+.gm-pill {
+    display: inline-block;
+
+    padding: 6px 11px;
+    border-radius: 30px;
+
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.gm-pill-green {
+    background: #e4f7ee;
+    color: #16855c;
+}
+
+.gm-pill-amber {
+    background: #fff3dd;
+    color: #a46a00;
+}
+
+.gm-pill-blue {
+    background: #e4f1ff;
+    color: #216ba2;
+}
+
+
+/* ==========================================
+   FORMULARIO DE HORAS
+   ========================================== */
+
+.gm-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 24px 20px;
+    border-radius: 18px;
+    border: 1px solid #dce8f2;
+    background: #ffffff;
+
+    box-shadow: 0 6px 25px rgba(24, 72, 113, 0.05);
+}
+
+.gm-form-card label {
+    margin-top: 7px;
+    color: #244662;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.gm-form-card input,
+.gm-form-card select,
+.gm-form-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid #cfdfeb;
+    border-radius: 10px;
+
+    background: #f9fcff;
+    color: #274760;
+
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.gm-form-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.gm-form-card input:focus,
+.gm-form-card select:focus,
+.gm-form-card textarea:focus {
+    outline: none;
+    border-color: #087b9d;
+    box-shadow: 0 0 0 3px rgba(8, 123, 157, 0.1);
+}
+
+.gm-form-card .gm-button {
+    margin-top: 14px;
+}
+
+
+/* ==========================================
+   ENLACES CON ASPECTO DE BOTÓN
+   ========================================== */
+
+.gm-link-button {
+    display: block;
+    box-sizing: border-box;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.gm-link-button:hover {
+    background: #076c8b;
+}
+
+
+/* ==========================================
+   RESUMEN MENSUAL
+   ========================================== */
+
+.gm-month-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    margin-bottom: 18px;
+    padding: 18px;
+
+    background: #ffffff;
+    border: 1px solid #deebf3;
+    border-radius: 15px;
+}
+
+.gm-month-filter label {
+    color: #244662;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.gm-month-filter input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px;
+    border: 1px solid #cbdde9;
+    border-radius: 9px;
+
+    background: #fafcff;
+    color: #173e66;
+    font-size: 14px;
+}
+
+.gm-hours-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 18px;
+    padding: 25px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f3fc,
+            #d2e8f6
+        );
+}
+
+.gm-hours-summary span {
+    color: #456c89;
+    font-size: 13px;
+}
+
+.gm-hours-summary strong {
+    color: #164763;
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+
+/* ==========================================
+   HISTORIAL DE HORAS
+   ========================================== */
+
+.gm-hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gm-hour-card {
+    padding: 18px;
+    background: #ffffff;
+
+    border: 1px solid #dce8f2;
+    border-radius: 15px;
+
+    box-shadow: 0 4px 18px rgba(24, 72, 113, 0.04);
+}
+
+.gm-hour-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.gm-hour-heading strong {
+    font-size: 12px;
+    color: #087b9d;
+}
+
+.gm-hour-heading p {
+    margin: 8px 0;
+    color: #284c6e;
+    font-size: 14px;
+}
+
+.gm-hour-amount {
+    font-weight: 700;
+    color: #173e66;
+    white-space: nowrap;
+    font-size: 17px;
+}
+
+.gm-hour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 14px;
+    padding-top: 13px;
+
+    border-top: 1px solid #edf2f7;
+}
+
+.gm-hour-footer time {
+    color: #7e90a3;
+    font-size: 12px;
+}
+
+.gm-hour-description {
+    margin: 12px 0 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #6e8299;
+}
+
+
+/* ==========================================
+   ACCIONES EN DETALLE DE PROYECTO
+   ========================================== */
+
+.gm-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.gm-action-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 18px;
+
+    background: #ffffff;
+    border: 1px solid #dce8f2;
+    border-radius: 13px;
+
+    text-decoration: none;
+    color: #164763;
+}
+
+.gm-action-card strong {
+    flex: 1;
+    font-size: 14px;
+}
+
+.gm-action-card > span {
+    color: #087b9d;
+    font-size: 20px;
+}
+
+
+/* ==========================================
+   MENSAJES Y ESTADOS VACÍOS
+   ========================================== */
+
+.gm-success {
+    margin-bottom: 16px;
+    padding: 15px;
+    border-radius: 11px;
+
+    background: #e7f7ef;
+    color: #176d4e;
+    font-size: 13px;
+}
+
+.gm-warning {
+    margin-bottom: 16px;
+    padding: 15px;
+    border-radius: 11px;
+
+    background: #fff4db;
+    color: #885c0a;
+    font-size: 13px;
+}
+
+.gm-empty {
+    padding: 36px 22px;
+    text-align: center;
+
+    border: 1px solid #dce8f2;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.gm-empty > span {
+    display: block;
+    font-size: 38px;
+    color: #8fc9df;
+}
+
+.gm-empty h2 {
+    margin: 14px 0 8px;
+    color: #173e66;
+    font-size: 17px;
+}
+
+.gm-empty p {
+    margin: 0;
+    color: #7a8da1;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   PANTALLAS PEQUEÑAS
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    .gm-task-card,
+    .gm-hour-card {
+        padding: 16px;
+    }
+
+    .gm-form-card {
+        padding: 20px 16px;
+    }
+
+    .gm-task-heading {
+        flex-wrap: wrap;
+    }
+
+    .gm-hours-summary strong {
+        font-size: 30px;
+    }
+}

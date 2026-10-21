@@ -1,0 +1,95 @@
+.login-pagina {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(
+        145deg,
+        #eaf3f8,
+        #f8fbfd
+    );
+}
+
+.login-tarjeta {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 38px 28px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(23, 62, 94, 0.09);
+    text-align: center;
+}
+
+.login-logo {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    background: #087b9d;
+    color: white;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.login-tarjeta h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #164763;
+}
+
+.login-subtitulo {
+    color: #718597;
+    font-size: 13px;
+    margin: 10px 0 32px;
+}
+
+.login-campo {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-campo label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.login-campo input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #ccd9e4;
+    border-radius: 9px;
+    outline: none;
+    background: #fbfdff;
+}
+
+.login-campo input:focus {
+    border-color: #087b9d;
+    box-shadow: 0 0 0 3px rgba(8, 123, 157, 0.12);
+}
+
+.login-boton {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    background: #087b9d;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-weight: bold;
+}
+
+.login-boton:hover {
+    background: #066783;
+}
+
+.login-pie {
+    font-size: 12px;
+    color: #8a9ba9;
+    margin: 30px 0 0;
+}

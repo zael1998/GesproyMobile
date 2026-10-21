@@ -1,0 +1,413 @@
+/* ==========================================
+   ICONOS DE CABECERA
+   ========================================== */
+
+.gm-header-icon {
+    flex-shrink: 0;
+    color: #1684a9;
+}
+
+
+/* ==========================================
+   RESUMEN DEL CALENDARIO
+   ========================================== */
+
+.gm-calendar-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    padding: 24px;
+    margin-bottom: 18px;
+
+    border-radius: 17px;
+    background: linear-gradient(
+        135deg,
+        #e1f2fc,
+        #c9e5f6
+    );
+
+    color: #17618d;
+}
+
+.gm-calendar-summary div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gm-calendar-summary span {
+    font-size: 13px;
+}
+
+.gm-calendar-summary strong {
+    font-size: 32px;
+    color: #153f68;
+}
+
+
+/* ==========================================
+   CALENDARIO
+   ========================================== */
+
+.gm-calendar-card {
+    padding: 20px 15px;
+    border: 1px solid #dae7f1;
+    border-radius: 18px;
+    background: #ffffff;
+
+    box-shadow: 0 5px 22px rgba(20, 66, 100, 0.05);
+}
+
+.gm-calendar-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.gm-calendar-toolbar h2 {
+    margin: 0;
+    color: #163e65;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.gm-calendar-toolbar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid #d9e6ef;
+    border-radius: 10px;
+
+    background: #f7fbfe;
+    color: #17618d;
+    cursor: pointer;
+}
+
+.gm-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.gm-calendar-weekday {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8192a6;
+}
+
+.gm-calendar-day {
+    min-width: 0;
+    min-height: 64px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 2px;
+
+    background: #f6fafd;
+    color: #294f71;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.gm-calendar-day small {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.gm-day-worked {
+    background: #e4f4fc;
+    color: #126d9d;
+}
+
+.gm-day-today {
+    border-color: #1689b0;
+}
+
+.gm-day-selected {
+    background: #087b9d;
+    color: white;
+}
+
+.gm-day-selected small {
+    color: white;
+}
+
+.gm-calendar-day:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+
+/* ==========================================
+   DETALLE DEL DÍA
+   ========================================== */
+
+.gm-calendar-detail {
+    margin-top: 20px;
+    padding: 20px;
+
+    background: white;
+    border: 1px solid #dce8f2;
+    border-radius: 16px;
+}
+
+.gm-calendar-detail h2 {
+    margin: 0 0 18px;
+    color: #173e66;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.gm-calendar-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 14px 0;
+    border-bottom: 1px solid #edf2f6;
+}
+
+.gm-calendar-entry strong {
+    color: #087b9d;
+    font-size: 12px;
+}
+
+.gm-calendar-entry p {
+    margin: 7px 0 10px;
+    color: #425e75;
+    font-size: 13px;
+}
+
+.gm-calendar-entry b {
+    color: #174466;
+    white-space: nowrap;
+}
+
+.gm-calendar-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin-top: 22px;
+}
+
+
+/* ==========================================
+   PERFIL
+   ========================================== */
+
+.gm-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 36px 20px;
+
+    background: white;
+    border: 1px solid #dce8f2;
+    border-radius: 18px;
+
+    text-align: center;
+}
+
+.gm-profile-avatar {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #77bde5,
+        #087b9d
+    );
+
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.gm-profile-card h2 {
+    margin: 0 0 12px;
+    color: #173e66;
+    font-size: 22px;
+}
+
+.gm-profile-card p {
+    margin: 15px 0 0;
+    color: #8799aa;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   DATOS DEL PERFIL
+   ========================================== */
+
+.gm-profile-information {
+    margin-top: 18px;
+    padding: 22px;
+
+    background: #ffffff;
+    border: 1px solid #dce8f2;
+    border-radius: 16px;
+}
+
+.gm-profile-information h2 {
+    margin: 0 0 22px;
+    color: #173e66;
+    font-size: 17px;
+}
+
+.gm-profile-field {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #edf2f7;
+    color: #087b9d;
+}
+
+.gm-profile-field:last-child {
+    border-bottom: none;
+}
+
+.gm-profile-field div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.gm-profile-field span {
+    font-size: 12px;
+    color: #899aac;
+}
+
+.gm-profile-field strong {
+    font-size: 14px;
+    color: #234b6b;
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================
+   CERRAR SESIÓN
+   ========================================== */
+
+.gm-profile-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+
+    border: 1px solid #f0c9c9;
+    border-radius: 12px;
+
+    background: #fff3f3;
+    color: #b43b3b;
+
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gm-profile-logout:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* ==========================================
+   NAVEGACIÓN MÓVIL
+   ========================================== */
+
+.gm-bottom-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gm-nav-item {
+    min-width: 0;
+    flex: 1;
+    gap: 6px;
+    font-size: 10px;
+}
+
+.gm-nav-item svg {
+    flex-shrink: 0;
+}
+
+.gm-nav-active {
+    color: #087b9d;
+}
+
+
+/* ==========================================
+   TELÉFONOS PEQUEÑOS
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    .gm-calendar-card {
+        padding: 15px 9px;
+    }
+
+    .gm-calendar-grid {
+        gap: 3px;
+    }
+
+    .gm-calendar-day {
+        min-height: 54px;
+        font-size: 12px;
+    }
+
+    .gm-calendar-day small {
+        font-size: 9px;
+    }
+
+    .gm-calendar-summary strong {
+        font-size: 27px;
+    }
+
+    .gm-calendar-detail {
+        padding: 17px 14px;
+    }
+
+    .gm-nav-item {
+        padding: 7px 3px;
+        font-size: 10px;
+    }
+}
