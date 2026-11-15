@@ -1,204 +1,92 @@
-// ==========================================
-// API DE GESPROY MÓVIL
-// ==========================================
-
 const API_BASE = "/api";
-
 let csrfToken = null;
 
-
-// ==========================================
-// PROCESAR RESPUESTAS
-// ==========================================
+function mensajes(valor) {
+  if (typeof valor === "string") return [valor];
+  if (Array.isArray(valor)) return valor.flatMap(mensajes);
+  if (valor && typeof valor === "object") {
+    if (typeof valor.message === "string") return [valor.message];
+    return Object.values(valor).flatMap(mensajes);
+  }
+  return [];
+}
 
 async function procesarRespuesta(respuesta) {
-
   const datos = await respuesta.json().catch(() => null);
-
-  if (!respuesta.ok) {
-
-    let mensaje =
-      datos?.error ||
-      `Error de comunicación (${respuesta.status})`;
-
-    if (datos?.campos) {
-
-      const errores = Object.values(datos.campos)
-        .flat()
-        .map((item) => item.message);
-
-      if (errores.length > 0) {
-        mensaje = errores.join(" ");
-      }
-    }
-
+  if (!respuesta.ok || datos === null) {
+    const campos = mensajes(datos?.campos);
+    const mensaje = [datos?.error || datos?.detail ||
+      (respuesta.ok ? "Django no ha devuelto JSON. Revisa el proxy." :
+        `Error de comunicación (${respuesta.status})`), ...campos].join(" ");
     const error = new Error(mensaje);
     error.status = respuesta.status;
-
+    error.campos = datos?.campos;
     throw error;
   }
-
   return datos;
 }
 
-
-// ==========================================
-// TOKEN CSRF
-// ==========================================
-
 export async function obtenerCsrf() {
-
-  const respuesta = await fetch(
-    `${API_BASE}/csrf/`,
-    {
-      credentials: "same-origin",
-      cache: "no-store",
-    }
-  );
-
+  const respuesta = await fetch(`${API_BASE}/csrf/`, {
+    credentials: "same-origin", cache: "no-store",
+  });
   const datos = await procesarRespuesta(respuesta);
-
   csrfToken = datos.csrfToken;
-
+  if (!csrfToken) throw new Error("No se recibió el token CSRF.");
   return csrfToken;
 }
 
-
-// ==========================================
-// PETICIONES GENERALES
-// ==========================================
-
 async function peticion(ruta, opciones = {}) {
-
   const metodo = (opciones.method || "GET").toUpperCase();
-
-  const requiereCsrf = ![
-    "GET",
-    "HEAD",
-    "OPTIONS",
-  ].includes(metodo);
-
-  if (requiereCsrf && !csrfToken) {
-    await obtenerCsrf();
-  }
-
-  const respuesta = await fetch(
-    `${API_BASE}${ruta}`,
-    {
-      credentials: "same-origin",
-
-      ...opciones,
-
-      headers: {
-        ...(opciones.body
-          ? { "Content-Type": "application/json" }
-          : {}),
-
-        ...(requiereCsrf
-          ? { "X-CSRFToken": csrfToken }
-          : {}),
-
-        ...opciones.headers,
-      },
-    }
-  );
-
+  const requiereCsrf = !["GET", "HEAD", "OPTIONS"].includes(metodo);
+  if (requiereCsrf && !csrfToken) await obtenerCsrf();
+  const respuesta = await fetch(`${API_BASE}${ruta}`, {
+    ...opciones,
+    credentials: "same-origin",
+    cache: "no-store",
+    headers: {
+      Accept: "application/json",
+      ...(opciones.body ? { "Content-Type": "application/json" } : {}),
+      ...(requiereCsrf ? { "X-CSRFToken": csrfToken } : {}),
+      ...opciones.headers,
+    },
+  });
+  if (respuesta.status === 403 || respuesta.status === 401) csrfToken = null;
   return procesarRespuesta(respuesta);
 }
 
-
-// ==========================================
-// AUTENTICACIÓN
-// ==========================================
-
 export async function iniciarSesion(username, password) {
-
-  const datos = await peticion("/login/", {
-    method: "POST",
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  });
-
   await obtenerCsrf();
-
+  const datos = await peticion("/login/", {
+    method: "POST", body: JSON.stringify({ username, password }),
+  });
+  csrfToken = datos.csrfToken || null;
+  if (!csrfToken) await obtenerCsrf();
   return datos;
 }
-
 
 export async function cerrarSesion() {
-
-  const datos = await peticion("/logout/", {
-    method: "POST",
-  });
-
+  const datos = await peticion("/logout/", { method: "POST" });
   csrfToken = null;
-
   return datos;
 }
-
-
-export function obtenerUsuarioActual() {
-
-  return peticion("/usuario/");
-}
-
-
-// ==========================================
-// PROYECTOS
-// ==========================================
-
-export function obtenerMisProyectos(soloResponsable = false) {
-
-  const filtro = soloResponsable
-    ? "?solo_responsable=1"
-    : "";
-
-  return peticion(`/mis-proyectos/${filtro}`);
-}
-
-
-export function obtenerDetalleProyecto(id) {
-
-  return peticion(
-    `/proyectos/${encodeURIComponent(id)}/`
-  );
-}
-
-
-// ==========================================
-// TAREAS
-// ==========================================
-
-export function obtenerTareasProyecto(proyectoId) {
-
-  return peticion(
-    `/proyectos/${encodeURIComponent(proyectoId)}/tareas/`
-  );
-}
-
-
-// ==========================================
-// REGISTRO DE HORAS
-// ==========================================
-
-export function registrarHoras(datos) {
-
-  return peticion("/horas/registrar/", {
-    method: "POST",
-    body: JSON.stringify(datos),
-  });
-}
-
-
-// ==========================================
-// HISTORIAL DE HORAS
-// ==========================================
-
-export function obtenerMisHoras(mes) {
-
-  return peticion(
-    `/horas/?mes=${encodeURIComponent(mes)}`
-  );
-}
+export const obtenerUsuarioActual = () => peticion("/usuario/");
+export const obtenerMisProyectos = (soloResponsable = false) =>
+  peticion(`/mis-proyectos/${soloResponsable ? "?solo_responsable=1" : ""}`);
+export const obtenerDetalleProyecto = (id) => peticion(`/proyectos/${encodeURIComponent(id)}/`);
+export const obtenerTareasProyecto = (id) => peticion(`/proyectos/${encodeURIComponent(id)}/tareas/`);
+export const registrarHoras = (datos) => peticion("/horas/registrar/", {
+  method: "POST", body: JSON.stringify(datos),
+});
+export const registrarPeriodos = (datos) => peticion("/horas/periodos/", {
+  method: "POST", body: JSON.stringify(datos),
+});
+export const obtenerMisHoras = (mes) =>
+  peticion(`/horas/${mes ? "?mes=" + encodeURIComponent(mes) : ""}`);
+export const obtenerRegistro = (id) => peticion(`/horas/${encodeURIComponent(id)}/`);
+export const editarRegistro = (id, datos) => peticion(`/horas/${encodeURIComponent(id)}/`, {
+  method: "PATCH", body: JSON.stringify(datos),
+});
+export const eliminarRegistro = (id) => peticion(`/horas/${encodeURIComponent(id)}/`, {
+  method: "DELETE",
+});

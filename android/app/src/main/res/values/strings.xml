@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">gesproymobile</string>
+    <string name="title_activity_main">gesproymobile</string>
+    <string name="package_name">es.cesga.gesproy</string>
+    <string name="custom_url_scheme">es.cesga.gesproy</string>
+</resources>

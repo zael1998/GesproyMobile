@@ -1,0 +1,54 @@
+/* Complemento de los estilos existentes de GesproyMobile. */
+.gm-imputacion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    margin: 12px 0;
+    padding: 16px;
+    border: 1px solid #dce8f2;
+    border-radius: 13px;
+    background: #f9fcff;
+}
+.gm-imputacion legend {
+    padding: 0 8px;
+    font-weight: 700;
+    color: #164763;
+}
+.gm-imputacion textarea { min-height: 75px; }
+.gm-metricas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 10px 0;
+}
+.gm-metricas > div {
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .65);
+    color: #456c89;
+    font-size: 12px;
+}
+.gm-metricas b {
+    display: block;
+    margin-top: 6px;
+    font-size: 20px;
+    color: #164763;
+}
+.gm-edit-link { margin-top: 14px; }
+.gm-danger { background: #b43b3b; }
+.gm-danger:hover { background: #962c2c; }
+.gm-day-periodo:not(.gm-day-selected) {
+    border-bottom: 3px solid #087b9d;
+}
+.gm-periodo-indicador {
+    max-width: 100%;
+    font-size: 9px;
+    overflow-wrap: anywhere;
+}
+.gm-calendar-link { margin: 0; }
+@media (max-width: 480px) {
+    .gm-imputacion { padding: 10px; }
+    .gm-metricas b { font-size: 17px; }
+    .gm-periodo-indicador { font-size: 8px !important; }
+}
